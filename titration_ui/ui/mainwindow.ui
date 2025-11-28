@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>Titration UI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="topLayout">
+      <item><widget class="QLabel" name="lblPH"><property name="text"><string>pH: --</string></property></widget></item>
+      <item><widget class="QLabel" name="lblTemp"><property name="text"><string>Temperature: -- °C</string></property></widget></item>
+      <item><widget class="QLabel" name="lblVol"><property name="text"><string>Volume: --</string></property></widget></item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QWidget" name="plotContainer">
+      <property name="minimumSize"><size><width>400</width><height>300</height></size></property>
+      <layout class="QVBoxLayout" name="plotLayout"/>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="btnGrid">
+      <item row="0" column="0"><widget class="QPushButton" name="btnAspire"><property name="text"><string>Aspire</string></property></widget></item>
+      <item row="0" column="1"><widget class="QPushButton" name="btnDispense"><property name="text"><string>Dispense</string></property></widget></item>
+      <item row="1" column="0"><widget class="QPushButton" name="btnEnterOnline"><property name="text"><string>Enter Online</string></property></widget></item>
+      <item row="1" column="1"><widget class="QPushButton" name="btnExitOnline"><property name="text"><string>Exit Online</string></property></widget></item>
+      <item row="2" column="0"><widget class="QPushButton" name="btnStartLogging"><property name="text"><string>Save Data</string></property></widget></item>
+      <item row="2" column="1"><widget class="QPushButton" name="btnStopLogging"><property name="text"><string>Stop Saving</string></property></widget></item>
+      <item row="3" column="0"><widget class="QPushButton" name="btnStartPlot"><property name="text"><string>Start Plot</string></property></widget></item>
+      <item row="3" column="1"><widget class="QPushButton" name="btnClearPlot"><property name="text"><string>Clear Plot</string></property></widget></item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
