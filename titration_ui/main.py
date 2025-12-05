@@ -242,7 +242,7 @@ class UiController(QtCore.QObject):
 
         # Buffers
         if USE_NUMPY:
-            self.x_data = np.empty(0, dtype=np.int32)
+            self.x_data = np.empty(0, dtype=np.uint32)
             self.y_data = np.empty(0, dtype=np.float32)
         else:
             self.x_data = []
@@ -251,8 +251,8 @@ class UiController(QtCore.QObject):
         self._last_plotted_vol = None
 
         # UI refresh timer (decouple from message rate)
-        self._refresh_hz = 10.0  # Adjust 20–60 based on machine load
-        self._max_points = 5000  # History cap (tune as needed)
+        self._refresh_hz = 5.0  # Adjust based on machine load
+        self._max_points = 10000  # History cap (tune as needed)
         self._refresh_timer = QtCore.QTimer(self.window)
         self._refresh_timer.timeout.connect(self._plot_refresh)
         self._refresh_timer.start(int(1000.0 / self._refresh_hz))
@@ -294,7 +294,7 @@ class UiController(QtCore.QObject):
             return
 
         if USE_NUMPY:
-            self.x_data = np.append(self.x_data, np.int32(vol))
+            self.x_data = np.append(self.x_data, np.uint32(vol))
             self.y_data = np.append(self.y_data, np.float32(ph))
         else:
             self.x_data.append(int(vol))
@@ -321,7 +321,7 @@ class UiController(QtCore.QObject):
             return
         if self._last_plotted_vol is None or vol != self._last_plotted_vol:
             if USE_NUMPY:
-                self.x_data = np.append(self.x_data, np.int32(vol))
+                self.x_data = np.append(self.x_data, np.uint32(vol))
                 self.y_data = np.append(self.y_data, np.float32(ph))
             else:
                 self.x_data.append(int(vol))
@@ -335,7 +335,7 @@ class UiController(QtCore.QObject):
             return
         if self._last_plotted_vol is None or vol != self._last_plotted_vol:
             if USE_NUMPY:
-                self.x_data = np.append(self.x_data, np.int32(vol))
+                self.x_data = np.append(self.x_data, np.uint32(vol))
                 self.y_data = np.append(self.y_data, np.float32(ph))
             else:
                 self.x_data.append(int(vol))
@@ -366,7 +366,7 @@ class UiController(QtCore.QObject):
             self.plot_curve.setData(self.x_data, self.y_data)
         else:
             try:
-                x_np = np.asarray(self.x_data, dtype=np.int32)
+                x_np = np.asarray(self.x_data, dtype=np.uint32)
                 y_np = np.asarray(self.y_data, dtype=np.float32)
                 self.plot_curve.setData(x_np, y_np)
             except Exception:
@@ -383,7 +383,7 @@ class UiController(QtCore.QObject):
         # Reset buffers and plot, and STOP plotting
         self._plotting_enabled = False
         if USE_NUMPY:
-            self.x_data = np.empty(0, dtype=np.int32)
+            self.x_data = np.empty(0, dtype=np.uint32)
             self.y_data = np.empty(0, dtype=np.float32)
         else:
             self.x_data = []
