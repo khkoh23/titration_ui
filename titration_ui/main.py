@@ -252,7 +252,7 @@ class UiController(QtCore.QObject):
 
         # UI refresh timer (decouple from message rate)
         self._refresh_hz = 5.0  # Adjust based on machine load
-        self._max_points = 20000  # History cap (tune as needed)
+        self._max_points = 40000  # History cap (tune as needed)
         self._refresh_timer = QtCore.QTimer(self.window)
         self._refresh_timer.timeout.connect(self._plot_refresh)
         self._refresh_timer.start(int(1000.0 / self._refresh_hz))
